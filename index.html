@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Campbell Helm — VP of Operations</title>
+<meta name="description" content="Campbell Helm — VP of Operations at Sapient Health Management. Healthcare operations, ASC development, and aspiring CPA based in Brooklyn, NY.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #080808;
+  --card: #111111;
+  --card-hover: #161616;
+  --border: #222222;
+  --white: #ffffff;
+  --gray: #a0a0a0;
+  --muted: #555555;
+  --green: #4ade80;
+  --yellow: #facc15;
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Grid background */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Grain texture overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ===== NAV ===== */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  z-index: 100;
+  background: rgba(8,8,8,0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-name {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--white);
+  text-decoration: none;
+  letter-spacing: 0.3px;
+}
+
+.hamburger {
+  width: 26px;
+  height: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  z-index: 110;
+}
+
+.hamburger span {
+  display: block;
+  height: 1.5px;
+  width: 100%;
+  background: var(--white);
+  border-radius: 2px;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+}
+
+.hamburger.active span:nth-child(1) { transform: translateY(8.25px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.active span:nth-child(3) { transform: translateY(-8.25px) rotate(-45deg); }
+
+/* ===== DRAWER ===== */
+.drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 90;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.35s ease;
+}
+.drawer-overlay.active { opacity: 1; visibility: visible; }
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100%;
+  background: var(--card);
+  border-left: 1px solid var(--border);
+  z-index: 95;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  padding: 90px 36px 36px;
+}
+.drawer.active { transform: translateX(0); }
+
+.drawer a {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--white);
+  text-decoration: none;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+  display: block;
+  transition: color 0.2s ease;
+}
+.drawer a:hover { color: var(--gray); }
+
+/* ===== MAIN ===== */
+main {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-top: 60px;
+}
+
+.hero-photo {
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--border);
+  margin-bottom: 28px;
+  background: var(--card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Placeholder initials (shown when no photo) */
+.hero-photo-placeholder {
+  font-family: var(--font-heading);
+  font-size: 40px;
+  color: var(--muted);
+  letter-spacing: 2px;
+}
+
+.hero-label {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--gray);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.hero-name {
+  font-family: var(--font-heading);
+  font-size: 56px;
+  font-weight: 400;
+  line-height: 1.12;
+  margin-bottom: 20px;
+}
+
+.hero-name-italic {
+  font-style: italic;
+  color: var(--gray);
+}
+
+.hero-tagline {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--muted);
+  max-width: 500px;
+  margin-bottom: 36px;
+  line-height: 1.7;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 200px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 28px;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  border: none;
+  letter-spacing: 0.3px;
+}
+
+.btn-primary {
+  background: var(--white);
+  color: var(--bg);
+}
+.btn-primary:hover { background: #e8e8e8; transform: translateY(-1px); }
+
+.btn-secondary {
+  background: transparent;
+  color: var(--white);
+  border: 1px solid var(--border);
+}
+.btn-secondary:hover { border-color: var(--muted); background: rgba(255,255,255,0.02); transform: translateY(-1px); }
+
+/* ===== SECTIONS ===== */
+.section { padding: 100px 0; }
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: 44px;
+  font-weight: 400;
+  margin-bottom: 48px;
+  letter-spacing: -0.5px;
+}
+
+.section-subtitle {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--gray);
+  margin-bottom: 28px;
+  margin-top: 52px;
+}
+.section-subtitle:first-of-type { margin-top: 0; }
+
+/* ===== ABOUT ===== */
+.about-text {
+  color: var(--gray);
+  font-size: 15px;
+  line-height: 1.85;
+}
+.about-text p { margin-bottom: 22px; }
+.about-text p:last-child { margin-bottom: 0; }
+
+/* ===== CARDS ===== */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 16px;
+  transition: all 0.25s ease;
+  position: relative;
+}
+.card:hover {
+  background: var(--card-hover);
+  border-color: #2a2a2a;
+}
+
+.card-header {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.card-logo {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--white);
+  letter-spacing: 0.5px;
+}
+
+.card-info { flex: 1; min-width: 0; }
+
+.card-title {
+  font-family: var(--font-heading);
+  font-size: 19px;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.card-role {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--white);
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.card-meta {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.card-description {
+  color: var(--gray);
+  font-size: 14px;
+  line-height: 1.75;
+  margin-top: 16px;
+}
+
+.card-bullets {
+  margin-top: 16px;
+  padding-left: 16px;
+  list-style: none;
+}
+.card-bullets li {
+  color: var(--gray);
+  font-size: 13.5px;
+  line-height: 1.7;
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 14px;
+}
+.card-bullets li::before {
+  content: '—';
+  position: absolute;
+  left: -4px;
+  color: var(--muted);
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 20px;
+}
+
+.tag {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 4px 10px;
+  border-radius: 6px;
+  transition: color 0.2s;
+}
+.card:hover .tag { color: var(--gray); }
+
+/* Expandable cards */
+.card-expand-btn {
+  position: absolute;
+  bottom: 18px;
+  right: 18px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--gray);
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+  line-height: 1;
+  padding: 0;
+  font-family: var(--font-body);
+}
+.card-expand-btn:hover { border-color: var(--gray); color: var(--white); }
+
+.card-expandable-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card.expanded .card-expandable-content { max-height: 900px; }
+
+/* Status dots */
+.status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 10px;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+}
+
+.status-active {
+  background: var(--green);
+  box-shadow: 0 0 6px rgba(74, 222, 128, 0.3);
+  animation: pulse-green 2s ease-in-out infinite;
+}
+
+@keyframes pulse-green {
+  0%, 100% { box-shadow: 0 0 4px rgba(74, 222, 128, 0.3); }
+  50% { box-shadow: 0 0 12px rgba(74, 222, 128, 0.5); }
+}
+
+.status-development { background: var(--muted); }
+.status-pitched { background: var(--yellow); box-shadow: 0 0 6px rgba(250, 204, 21, 0.2); }
+
+/* ===== SKILLS ===== */
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px 48px;
+}
+
+.skill-group-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 16px;
+}
+
+.skill-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 7px 0;
+  color: var(--gray);
+  font-size: 13.5px;
+}
+
+.skill-icon {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  color: var(--gray);
+}
+
+/* ===== CONTACT ===== */
+.contact-headline {
+  font-family: var(--font-heading);
+  font-size: 44px;
+  font-weight: 400;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+.contact-subtext {
+  color: var(--muted);
+  font-size: 15px;
+  margin-bottom: 40px;
+  line-height: 1.7;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--white);
+  text-decoration: none;
+  font-size: 15px;
+  transition: all 0.2s ease;
+}
+.contact-link:first-of-type { border-top: 1px solid var(--border); }
+.contact-link:hover { color: var(--gray); padding-left: 8px; }
+
+.contact-link-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  min-width: 70px;
+  margin-right: 20px;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  text-align: center;
+  padding: 48px 0;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 500;
+  border-top: 1px solid var(--border);
+  margin-top: 20px;
+  letter-spacing: 0.5px;
+}
+
+/* ===== SCROLL REVEAL ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children */
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* ===== MOBILE ===== */
+@media (max-width: 600px) {
+  .nav { padding: 0 20px; }
+  main { padding: 0 18px; }
+  .hero-name { font-size: 40px; }
+  .hero-photo { width: 110px; height: 110px; }
+  .section-title { font-size: 34px; }
+  .contact-headline { font-size: 34px; }
+  .skills-grid { grid-template-columns: 1fr; gap: 32px; }
+  .card { padding: 22px; }
+  .section { padding: 72px 0; }
+  .drawer { width: 260px; padding: 80px 28px 28px; }
+  .drawer a { font-size: 20px; padding: 15px 0; }
+  .contact-link { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .contact-link-label { margin-right: 0; }
+}
+
+@media (max-width: 390px) {
+  .hero-name { font-size: 34px; }
+  .section-title { font-size: 28px; }
+  .contact-headline { font-size: 28px; }
+  main { padding: 0 16px; }
+  .card { padding: 18px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav class="nav">
+  <a href="#" class="nav-name">Campbell</a>
+  <button class="hamburger" id="hamburger" aria-label="Open navigation menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ===== DRAWER ===== -->
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<div class="drawer" id="drawer">
+  <a href="#about" class="drawer-link">About</a>
+  <a href="#education" class="drawer-link">Education</a>
+  <a href="#experience" class="drawer-link">Experience</a>
+  <a href="#projects" class="drawer-link">Projects</a>
+  <a href="#skills" class="drawer-link">Skills</a>
+  <a href="#contact" class="drawer-link">Contact</a>
+</div>
+
+<main>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero">
+  <div class="hero-photo">
+    <!-- REPLACE: To embed your headshot, replace the placeholder below with:
+         <img src="data:image/jpeg;base64,YOUR_BASE64_HERE" alt="Campbell Helm"> -->
+    <span class="hero-photo-placeholder">CH</span>
+  </div>
+  <div class="hero-label">VP of Operations &middot; Sapient Health Management &middot; Brooklyn, NY</div>
+  <h1 class="hero-name">Campbell<br><span class="hero-name-italic">Helm</span></h1>
+  <p class="hero-tagline">Healthcare Operations &amp; Finance &middot; Aspiring CPA &middot; Purdue Global &middot; Est. B.S. Accounting March 2026</p>
+  <div class="hero-buttons">
+    <a href="campbell-helm-resume.html" class="btn btn-primary">R&eacute;sum&eacute;</a>
+    <a href="https://www.linkedin.com/in/campbell-helm-8868571a5" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">LinkedIn</a>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="section" id="about">
+  <h2 class="section-title reveal">About</h2>
+  <div class="about-text reveal">
+    <p>I'm a Brooklyn-based healthcare operations executive and aspiring CPA serving as VP of Operations at Sapient Health Management — where I'm leading the buildout of four simultaneous Ambulatory Surgery Centers across New York and Pennsylvania, including the first ASC ever launched in Brooklyn.</p>
+    <p>My work spans federal Medicare enrollment, construction coordination, capital and supply contracting, GPO development, ENVI inventory management, lead mining, hiring, and full-cycle bookkeeping — the kind of responsibility that usually gets spread across entire departments.</p>
+    <p>I'm completing my B.S. in Accounting at Purdue University Global while working full time. Long-term, I'm building toward a CPA certification and a real estate investment portfolio — connecting the dots between financial acumen, operational instinct, and ownership.</p>
+  </div>
+</section>
+
+<!-- ===== EDUCATION ===== -->
+<section class="section" id="education">
+  <h2 class="section-title reveal">Education</h2>
+
+  <div class="card reveal">
+    <div class="card-header">
+      <div class="card-logo">PG</div>
+      <div class="card-info">
+        <div class="card-title">Purdue University Global</div>
+        <div class="card-role">B.S. in Accounting</div>
+        <div class="card-meta">December 2022 – March 2026 (Est.)</div>
+      </div>
+    </div>
+    <p class="card-description">Completing degree while working full-time 40 hours per week.</p>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-header">
+      <div class="card-logo">BC</div>
+      <div class="card-info">
+        <div class="card-title">Brooklyn College</div>
+        <div class="card-role">Business Management</div>
+        <div class="card-meta">August 2021 – December 2022 &middot; Brooklyn, NY</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EXPERIENCE ===== -->
+<section class="section" id="experience">
+  <h2 class="section-title reveal">Experience</h2>
+
+  <!-- Sapient Health Management -->
+  <div class="card reveal" data-expandable>
+    <div class="card-header">
+      <div class="card-logo">SH</div>
+      <div class="card-info">
+        <div class="card-title">Sapient Health Management</div>
+        <div class="card-role">VP of Operations</div>
+        <div class="card-meta">January 2025 – Present &middot; New York, NY</div>
+      </div>
+    </div>
+    <ul class="card-bullets">
+      <li>Central coordinator across all Sapient operations — serving as the connective tissue between construction, vendors, clinical staff, finance, and ownership across 4 simultaneous ASC development projects in NY and PA</li>
+      <li>Construction &amp; contractor coordination — managing general contractors and subcontractors including Rapid Construction across all active buildouts; scheduling site visits, tracking milestones, and resolving field issues in real time</li>
+      <li>Capital &amp; supply contracting — negotiating and managing contracts on both the capital equipment side (Olympus, Stryker, Hill-Rom, Baxter) and the medical supply side (Henry Schein, McKesson, Concordance Healthcare, Medline, Acupath, Biogen Disposal)</li>
+    </ul>
+    <div class="card-expandable-content">
+      <ul class="card-bullets" style="margin-top:0">
+        <li>GPO development — actively pitching a Group Purchasing Organization to vendors and facilities, leveraging Sapient's multi-facility volume to secure preferential pricing across the supply chain</li>
+        <li>ENVI inventory system — built Sapient's ENVI medical inventory platform from scratch; owns setup, day-to-day management, data entry, and ongoing optimization across facilities</li>
+        <li>Lead mining &amp; outreach — identifying and reaching out to physicians, facilities, and partners to support ASC physician recruitment and new facility development opportunities</li>
+        <li>Hiring &amp; HR coordination — sourcing candidates, coordinating interviews, and onboarding clinical and operations staff across multiple facilities simultaneously</li>
+        <li>Medicare enrollment &amp; compliance — prepared and filed CMS-855B, CMS-460, and CMS-588 federal forms; maintained full DOH compliance documentation across NY and PA</li>
+        <li>Finance &amp; bookkeeping — rebuilt QuickBooks workflows for multi-facility payroll, invoicing, reconciliations, and budget forecasting; supports P&amp;L review alongside CPAs and ownership</li>
+      </ul>
+    </div>
+    <div class="card-tags">
+      <span class="tag">VP Operations</span>
+      <span class="tag">ASC Development</span>
+      <span class="tag">GPO</span>
+      <span class="tag">ENVI Inventory</span>
+      <span class="tag">Capital Contracting</span>
+      <span class="tag">Supply Chain</span>
+      <span class="tag">Construction Coord.</span>
+      <span class="tag">Medicare Enrollment</span>
+      <span class="tag">Hiring</span>
+      <span class="tag">QuickBooks</span>
+      <span class="tag">DOH Compliance</span>
+    </div>
+    <button class="card-expand-btn" aria-label="Expand card">+</button>
+  </div>
+
+  <!-- Odity -->
+  <div class="card reveal">
+    <div class="card-header">
+      <div class="card-logo">OD</div>
+      <div class="card-info">
+        <div class="card-title">Odity — Golden Goose</div>
+        <div class="card-role">Customer Service Representative</div>
+        <div class="card-meta">September 2024 – December 2024 &middot; New York, NY</div>
+      </div>
+    </div>
+    <ul class="card-bullets">
+      <li>Delivered luxury-level client support for Golden Goose via email and phone using Salesforce</li>
+      <li>Managed orders, exchanges, and escalations while maintaining strict brand service standards</li>
+    </ul>
+    <div class="card-tags">
+      <span class="tag">Salesforce</span>
+      <span class="tag">Luxury Retail</span>
+      <span class="tag">CRM</span>
+    </div>
+  </div>
+
+  <!-- Special Operations -->
+  <div class="card reveal">
+    <div class="card-header">
+      <div class="card-logo">SO</div>
+      <div class="card-info">
+        <div class="card-title">Special Operations</div>
+        <div class="card-role">Production Assistant</div>
+        <div class="card-meta">April 2023 – October 2023 &middot; New York, NY</div>
+      </div>
+    </div>
+    <ul class="card-bullets">
+      <li>Managed inventory and equipment rentals, improving studio operations workflow</li>
+      <li>Handled lighting setup, set builds, painting, and day-to-day studio upkeep</li>
+    </ul>
+    <div class="card-tags">
+      <span class="tag">Production</span>
+      <span class="tag">Operations</span>
+      <span class="tag">Inventory</span>
+    </div>
+  </div>
+
+  <!-- Drip Accessory -->
+  <div class="card reveal">
+    <div class="card-header">
+      <div class="card-logo">DA</div>
+      <div class="card-info">
+        <div class="card-title">Drip Accessory</div>
+        <div class="card-role">Customer Service Manager</div>
+        <div class="card-meta">May 2020 – April 2023 &middot; Brooklyn, NY</div>
+      </div>
+    </div>
+    <ul class="card-bullets">
+      <li>Founded and built the entire CS department at age 16 — hired, trained, and managed support agents from day one</li>
+      <li>Managed day-to-day operations for a growing national e-commerce brand</li>
+      <li>Implemented workflow improvements that measurably boosted team efficiency and customer satisfaction</li>
+    </ul>
+    <div class="card-tags">
+      <span class="tag">Leadership</span>
+      <span class="tag">E-Commerce</span>
+      <span class="tag">Team Management</span>
+      <span class="tag">Built at Age 16</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROJECTS ===== -->
+<section class="section" id="projects">
+  <h2 class="section-title reveal">Projects</h2>
+
+  <h3 class="section-subtitle reveal">ASC Facilities</h3>
+
+  <!-- Rego Park Endoscopy Center -->
+  <div class="card reveal" data-expandable>
+    <div class="card-header">
+      <div class="card-info">
+        <div class="card-title"><span class="status-dot status-active"></span>Rego Park Endoscopy Center</div>
+        <div class="card-role">Rego Park Endo LLC</div>
+        <div class="card-meta">2025 &middot; 99-01 Queens Blvd, Rego Park, NY &middot; Brooklyn's first ASC</div>
+      </div>
+    </div>
+    <p class="card-description">Led the full on-site buildout from ground up — coordinating Rapid Construction and all subcontractors through every phase of the build. The first Ambulatory Surgery Center to launch in Brooklyn.</p>
+    <ul class="card-bullets">
+      <li>Led the full on-site buildout from ground up — coordinating Rapid Construction and all subcontractors through every phase</li>
+      <li>Onboarded all supply and capital vendors; managed delivery scheduling against live construction milestones</li>
+    </ul>
+    <div class="card-expandable-content">
+      <ul class="card-bullets" style="margin-top:0">
+        <li>Filed CMS-855B, CMS-460, and CMS-588 Medicare enrollment forms; maintained full DOH compliance documentation</li>
+        <li>Configured EHR/EMR with SIS First and completed EndoVault project workbook</li>
+        <li>Set up ENVI inventory management system from scratch for the facility</li>
+        <li>Sourced and coordinated hiring of clinical and operations staff including nursing and front-office roles</li>
+      </ul>
+    </div>
+    <div class="card-tags">
+      <span class="tag">Construction Coord.</span>
+      <span class="tag">Medicare Enrollment</span>
+      <span class="tag">DOH Compliance</span>
+      <span class="tag">ENVI Setup</span>
+      <span class="tag">SIS First</span>
+      <span class="tag">EndoVault</span>
+      <span class="tag">Staff Hiring</span>
+      <span class="tag">Rapid Construction</span>
+    </div>
+    <button class="card-expand-btn" aria-label="Expand card">+</button>
+  </div>
+
+  <!-- Smithtown ASC -->
+  <div class="card reveal" data-expandable>
+    <div class="card-header">
+      <div class="card-info">
+        <div class="card-title"><span class="status-dot status-development"></span>Smithtown ASC</div>
+        <div class="card-role">Sapient Health Management</div>
+        <div class="card-meta">2025–2026 &middot; Long Island, NY</div>
+      </div>
+    </div>
+    <ul class="card-bullets">
+      <li>Handling Medicare enrollment paperwork and CPA/P&amp;L review vendor sourcing</li>
+    </ul>
+    <div class="card-expandable-content">
+      <ul class="card-bullets" style="margin-top:0">
+        <li>Coordinating Concordance Healthcare and supply chain vendor account setup</li>
+        <li>Managing contractor scheduling and buildout coordination as construction progresses</li>
+      </ul>
+    </div>
+    <div class="card-tags">
+      <span class="tag">Medicare Enrollment</span>
+      <span class="tag">P&amp;L Review</span>
+      <span class="tag">Supply Chain</span>
+      <span class="tag">Construction Coord.</span>
+    </div>
+    <button class="card-expand-btn" aria-label="Expand card">+</button>
+  </div>
+
+  <!-- Hamptons Endoscopy -->
+  <div class="card reveal" data-expandable>
+    <div class="card-header">
+      <div class="card-info">
+        <div class="card-title"><span class="status-dot status-development"></span>Hamptons Endoscopy</div>
+        <div class="card-role">Sapient Health Management</div>
+        <div class="card-meta">2025–2026 &middot; 68 Riverhead Rd, Westhampton Beach, NY</div>
+      </div>
+    </div>
+    <ul class="card-bullets">
+      <li>Coordinating contractor schedules and construction milestones for the East End facility</li>
+    </ul>
+    <div class="card-expandable-content">
+      <ul class="card-bullets" style="margin-top:0">
+        <li>Leading vendor outreach and supply chain buildout in parallel with other active projects</li>
+        <li>Managing compliance documentation and Medicare enrollment process</li>
+      </ul>
+    </div>
+    <div class="card-tags">
+      <span class="tag">Construction Coord.</span>
+      <span class="tag">Compliance</span>
+      <span class="tag">Vendor Outreach</span>
+      <span class="tag">Medicare Enrollment</span>
+    </div>
+    <button class="card-expand-btn" aria-label="Expand card">+</button>
+  </div>
+
+  <!-- Philadelphia Surgical LLC -->
+  <div class="card reveal" data-expandable>
+    <div class="card-header">
+      <div class="card-info">
+        <div class="card-title"><span class="status-dot status-development"></span>Philadelphia Surgical LLC</div>
+        <div class="card-role">Sapient Health Management</div>
+        <div class="card-meta">2025–2026 &middot; 8400 Roosevelt Blvd, Philadelphia, PA</div>
+      </div>
+    </div>
+    <ul class="card-bullets">
+      <li>Supporting Medicare enrollment and PA regulatory filings for first out-of-state Sapient facility</li>
+    </ul>
+    <div class="card-expandable-content">
+      <ul class="card-bullets" style="margin-top:0">
+        <li>Coordinating Concordance Healthcare vendor setup and surgical supply chain buildout</li>
+        <li>Assisting CPA on P&amp;L review and financial infrastructure ahead of launch</li>
+      </ul>
+    </div>
+    <div class="card-tags">
+      <span class="tag">Medicare Enrollment</span>
+      <span class="tag">PA Regulatory</span>
+      <span class="tag">Supply Chain</span>
+      <span class="tag">P&amp;L Review</span>
+    </div>
+    <button class="card-expand-btn" aria-label="Expand card">+</button>
+  </div>
+
+  <h3 class="section-subtitle reveal">Initiatives &amp; Infrastructure</h3>
+
+  <!-- GPO -->
+  <div class="card reveal">
+    <div class="card-header">
+      <div class="card-info">
+        <div class="card-title"><span class="status-dot status-pitched"></span>Group Purchasing Organization (GPO)</div>
+        <div class="card-role">Sapient Health Management</div>
+        <div class="card-meta">2025–Present</div>
+      </div>
+    </div>
+    <p class="card-description">Developing and actively pitching a GPO to vendors and healthcare facilities — leveraging Sapient's growing multi-facility volume across 4 ASCs to negotiate preferential pricing, standardized contracts, and consolidated purchasing power across the supply chain. The GPO represents a structural cost advantage for all current and future Sapient facilities and positions the organization as a serious buyer in the market.</p>
+    <div class="card-tags">
+      <span class="tag">GPO Development</span>
+      <span class="tag">Vendor Negotiation</span>
+      <span class="tag">Volume Contracting</span>
+      <span class="tag">Strategic Sourcing</span>
+      <span class="tag">Multi-facility</span>
+    </div>
+  </div>
+
+  <!-- Capital & Supply Contracting -->
+  <div class="card reveal">
+    <div class="card-header">
+      <div class="card-info">
+        <div class="card-title"><span class="status-dot status-active"></span>Capital &amp; Supply Contracting</div>
+        <div class="card-role">Sapient Health Management</div>
+        <div class="card-meta">2025–Present &middot; Multi-facility</div>
+      </div>
+    </div>
+    <p class="card-description">Managing vendor contracts on both sides of the procurement equation across all Sapient facilities. Capital equipment side: Olympus, Stryker, Hill-Rom, Baxter. Medical supply side: Henry Schein, McKesson, Concordance Healthcare, Medline, Acupath, Biogen Disposal. Responsible for negotiating terms, coordinating delivery timelines against construction schedules, and ensuring contracts align with each facility's operational launch date.</p>
+    <div class="card-tags">
+      <span class="tag">Olympus</span>
+      <span class="tag">Stryker</span>
+      <span class="tag">Hill-Rom</span>
+      <span class="tag">Baxter</span>
+      <span class="tag">Henry Schein</span>
+      <span class="tag">McKesson</span>
+      <span class="tag">Concordance Healthcare</span>
+      <span class="tag">Medline</span>
+      <span class="tag">Acupath</span>
+      <span class="tag">Biogen Disposal</span>
+    </div>
+  </div>
+
+  <!-- ENVI -->
+  <div class="card reveal">
+    <div class="card-header">
+      <div class="card-info">
+        <div class="card-title"><span class="status-dot status-active"></span>ENVI Medical Inventory System</div>
+        <div class="card-role">Sapient Health Management</div>
+        <div class="card-meta">2025–Present &middot; Multi-facility</div>
+      </div>
+    </div>
+    <p class="card-description">Built Sapient's ENVI medical inventory management system from scratch — handling initial setup, data architecture, day-to-day management, and ongoing optimization. Owns all data entry and inventory tracking across facilities. ENVI gives Sapient real-time visibility into supply levels, usage patterns, and reorder triggers across all active ASCs.</p>
+    <div class="card-tags">
+      <span class="tag">ENVI</span>
+      <span class="tag">Inventory Management</span>
+      <span class="tag">System Setup</span>
+      <span class="tag">Data Management</span>
+      <span class="tag">Supply Tracking</span>
+      <span class="tag">Multi-facility</span>
+    </div>
+  </div>
+
+  <!-- Lead Mining -->
+  <div class="card reveal">
+    <div class="card-header">
+      <div class="card-info">
+        <div class="card-title"><span class="status-dot status-active"></span>Physician &amp; Facility Lead Mining</div>
+        <div class="card-role">Sapient Health Management</div>
+        <div class="card-meta">2025–Present</div>
+      </div>
+    </div>
+    <p class="card-description">Conducting targeted outreach to physicians, facilities, and strategic partners to support ASC physician recruitment and new facility development opportunities. Responsible for identifying leads, building contact lists, and coordinating outreach campaigns that feed directly into Sapient's growth pipeline.</p>
+    <div class="card-tags">
+      <span class="tag">Lead Generation</span>
+      <span class="tag">Physician Outreach</span>
+      <span class="tag">Business Development</span>
+      <span class="tag">Pipeline Building</span>
+      <span class="tag">ASC Recruitment</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SKILLS ===== -->
+<section class="section" id="skills">
+  <h2 class="section-title reveal">Skills</h2>
+  <div class="skills-grid reveal">
+
+    <div class="skill-group">
+      <div class="skill-group-label">Accounting &amp; Finance</div>
+      <div class="skill-item"><div class="skill-icon">QB</div>QuickBooks</div>
+      <div class="skill-item"><div class="skill-icon">XL</div>Excel</div>
+      <div class="skill-item"><div class="skill-icon">BK</div>Bookkeeping</div>
+      <div class="skill-item"><div class="skill-icon">PR</div>Payroll</div>
+      <div class="skill-item"><div class="skill-icon">BG</div>Budgeting</div>
+      <div class="skill-item"><div class="skill-icon">RC</div>Reconciliations</div>
+      <div class="skill-item"><div class="skill-icon">FC</div>Forecasting</div>
+      <div class="skill-item"><div class="skill-icon">PL</div>P&amp;L Review</div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-label">Healthcare Operations</div>
+      <div class="skill-item"><div class="skill-icon">AS</div>ASC Development</div>
+      <div class="skill-item"><div class="skill-icon">ME</div>Medicare Enrollment</div>
+      <div class="skill-item"><div class="skill-icon">DC</div>DOH Compliance</div>
+      <div class="skill-item"><div class="skill-icon">CC</div>Construction Coord.</div>
+      <div class="skill-item"><div class="skill-icon">VC</div>Vendor Contracting</div>
+      <div class="skill-item"><div class="skill-icon">EH</div>EHR/EMR Config</div>
+      <div class="skill-item"><div class="skill-icon">EN</div>ENVI Inventory</div>
+      <div class="skill-item"><div class="skill-icon">GP</div>GPO Development</div>
+      <div class="skill-item"><div class="skill-icon">CP</div>Capital Procurement</div>
+      <div class="skill-item"><div class="skill-icon">LM</div>Lead Mining</div>
+      <div class="skill-item"><div class="skill-icon">HR</div>Hiring &amp; Recruiting</div>
+      <div class="skill-item"><div class="skill-icon">SC</div>Scheduling</div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-label">Tools &amp; Platforms</div>
+      <div class="skill-item"><div class="skill-icon">SF</div>Salesforce</div>
+      <div class="skill-item"><div class="skill-icon">ZD</div>Zendesk</div>
+      <div class="skill-item"><div class="skill-icon">GG</div>Gorgias</div>
+      <div class="skill-item"><div class="skill-icon">GW</div>Google Workspace</div>
+      <div class="skill-item"><div class="skill-icon">MS</div>Microsoft Office</div>
+      <div class="skill-item"><div class="skill-icon">SI</div>SIS First</div>
+      <div class="skill-item"><div class="skill-icon">EV</div>EndoVault</div>
+      <div class="skill-item"><div class="skill-icon">EN</div>ENVI</div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-label">Strengths</div>
+      <div class="skill-item"><div class="skill-icon">EQ</div>Emotional Intelligence</div>
+      <div class="skill-item"><div class="skill-icon">AD</div>Adaptability</div>
+      <div class="skill-item"><div class="skill-icon">TM</div>Time Management</div>
+      <div class="skill-item"><div class="skill-icon">OW</div>Ownership Mindset</div>
+      <div class="skill-item"><div class="skill-icon">CT</div>Cross-team Collaboration</div>
+      <div class="skill-item"><div class="skill-icon">SS</div>Self-starter</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="section" id="contact">
+  <h2 class="contact-headline reveal">Get in touch</h2>
+  <p class="contact-subtext reveal">Open to opportunities in healthcare operations, ASC development, accounting, and real estate.</p>
+  <div class="reveal">
+    <a href="mailto:CampbellHelm2@gmail.com" class="contact-link">
+      <span class="contact-link-label">Email</span>CampbellHelm2@gmail.com
+    </a>
+    <a href="tel:+17184907164" class="contact-link">
+      <span class="contact-link-label">Phone</span>718-490-7164
+    </a>
+    <a href="https://www.linkedin.com/in/campbell-helm-8868571a5" target="_blank" rel="noopener noreferrer" class="contact-link">
+      <span class="contact-link-label">LinkedIn</span>linkedin.com/in/campbell-helm &rarr;
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">&copy; 2026 Campbell Helm</footer>
+
+<script>
+(function() {
+  // ===== HAMBURGER & DRAWER =====
+  const hamburger = document.getElementById('hamburger');
+  const drawer = document.getElementById('drawer');
+  const overlay = document.getElementById('drawerOverlay');
+  const drawerLinks = drawer.querySelectorAll('.drawer-link');
+
+  function openDrawer() {
+    hamburger.classList.add('active');
+    drawer.classList.add('active');
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDrawer() {
+    hamburger.classList.remove('active');
+    drawer.classList.remove('active');
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  hamburger.addEventListener('click', function() {
+    if (drawer.classList.contains('active')) {
+      closeDrawer();
+    } else {
+      openDrawer();
+    }
+  });
+
+  overlay.addEventListener('click', closeDrawer);
+
+  drawerLinks.forEach(function(link) {
+    link.addEventListener('click', closeDrawer);
+  });
+
+  // Close drawer on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && drawer.classList.contains('active')) {
+      closeDrawer();
+    }
+  });
+
+  // ===== SCROLL REVEAL =====
+  var revealEls = document.querySelectorAll('.reveal');
+  var revealObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.08,
+    rootMargin: '0px 0px -50px 0px'
+  });
+
+  revealEls.forEach(function(el) {
+    revealObserver.observe(el);
+  });
+
+  // ===== EXPANDABLE CARDS =====
+  document.querySelectorAll('[data-expandable]').forEach(function(card) {
+    var btn = card.querySelector('.card-expand-btn');
+    if (!btn) return;
+
+    btn.addEventListener('click', function() {
+      var isExpanded = card.classList.contains('expanded');
+      card.classList.toggle('expanded');
+      btn.textContent = isExpanded ? '+' : '\u2212';
+      btn.setAttribute('aria-label', isExpanded ? 'Expand card' : 'Collapse card');
+    });
+  });
+})();
+</script>
+</body>
+</html>
