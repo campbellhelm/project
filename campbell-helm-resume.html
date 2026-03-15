@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Campbell Helm — R&eacute;sum&eacute;</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #ffffff;
+  --text: #111111;
+  --text-secondary: #444444;
+  --text-muted: #777777;
+  --accent: #111111;
+  --border: #e0e0e0;
+  --border-light: #f0f0f0;
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+}
+
+html { font-size: 14px; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Save as PDF button — hidden in print */
+.save-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  letter-spacing: 0.3px;
+}
+.save-btn:hover { opacity: 0.8; }
+
+/* Back to portfolio link */
+.back-link {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 100;
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.back-link:hover { color: var(--text); }
+
+/* Resume container */
+.resume {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 48px 48px 60px;
+}
+
+/* Two-column layout */
+.resume-grid {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 0 48px;
+}
+
+/* ===== HEADER ===== */
+.resume-header {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 24px;
+  border-bottom: 2px solid var(--accent);
+  margin-bottom: 28px;
+}
+
+.header-name {
+  font-family: var(--font-heading);
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+
+.header-title {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 2px;
+}
+
+.header-subtitle {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.header-contact {
+  text-align: right;
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.header-contact a {
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--accent);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 6px;
+  margin-bottom: 16px;
+  margin-top: 24px;
+  letter-spacing: 0.3px;
+}
+
+.section-title:first-of-type { margin-top: 0; }
+
+/* ===== EXPERIENCE ENTRIES ===== */
+.entry { margin-bottom: 18px; }
+
+.entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 2px;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.entry-company {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text);
+}
+
+.entry-location {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.entry-role-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.entry-role {
+  font-style: italic;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.entry-dates {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.entry-bullets {
+  padding-left: 16px;
+  margin: 0;
+}
+
+.entry-bullets li {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 3px;
+}
+
+/* ===== RIGHT COLUMN ===== */
+.right-col .section-title { margin-top: 0; }
+.right-col .section-title + .section-title { margin-top: 24px; }
+
+.edu-entry { margin-bottom: 14px; }
+
+.edu-school {
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--text);
+}
+
+.edu-degree {
+  font-style: italic;
+  font-size: 12.5px;
+  color: var(--text-secondary);
+}
+
+.edu-dates {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.edu-note {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* Skills in right column */
+.skill-category {
+  margin-bottom: 12px;
+}
+
+.skill-cat-label {
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+
+.skill-cat-items {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Strengths */
+.strength-item {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 3px;
+  padding-left: 12px;
+  position: relative;
+}
+.strength-item::before {
+  content: '\2013';
+  position: absolute;
+  left: 0;
+  color: var(--text-muted);
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  .save-btn, .back-link { display: none !important; }
+
+  html { font-size: 13px; }
+
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .resume {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .section-title { break-after: avoid; }
+  .entry { break-inside: avoid; }
+
+  @page {
+    margin: 0.5in 0.6in;
+    size: letter;
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 700px) {
+  .resume { padding: 80px 20px 40px; }
+  .resume-grid { grid-template-columns: 1fr; gap: 0; }
+  .resume-header { flex-direction: column; gap: 12px; }
+  .header-contact { text-align: left; }
+  .header-name { font-size: 28px; }
+  .right-col .section-title { margin-top: 24px; }
+}
+</style>
+</head>
+<body>
+
+<a href="campbell-helm.html" class="back-link">&larr; Back to portfolio</a>
+<button class="save-btn" onclick="window.print()">Save as PDF</button>
+
+<div class="resume">
+  <div class="resume-grid">
+
+    <!-- ===== HEADER (full width) ===== -->
+    <header class="resume-header">
+      <div>
+        <div class="header-name">Campbell Helm</div>
+        <div class="header-title">VP of Operations — Sapient Health Management</div>
+        <div class="header-subtitle">Healthcare Operations &amp; Finance &middot; Aspiring CPA</div>
+      </div>
+      <div class="header-contact">
+        Brooklyn, NY 11209<br>
+        <a href="tel:+17184907164">(718) 490-7164</a><br>
+        <a href="mailto:CampbellHelm2@gmail.com">CampbellHelm2@gmail.com</a><br>
+        <a href="https://www.linkedin.com/in/campbell-helm-8868571a5">linkedin.com/in/campbell-helm</a>
+      </div>
+    </header>
+
+    <!-- ===== LEFT COLUMN ===== -->
+    <div class="left-col">
+
+      <h2 class="section-title">Experience</h2>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-company">Sapient Health Management</span>
+          <span class="entry-location">New York, NY</span>
+        </div>
+        <div class="entry-role-line">
+          <span class="entry-role">VP of Operations</span>
+          <span class="entry-dates">Jan 2025 – Present</span>
+        </div>
+        <ul class="entry-bullets">
+          <li>Central coordinator across 4 simultaneous ASC development projects in NY and PA — managing construction, vendors, clinical staff, finance, and ownership</li>
+          <li>Managing general contractors and subcontractors including Rapid Construction; scheduling site visits, tracking milestones, and resolving field issues across all active buildouts</li>
+          <li>Negotiating and managing capital equipment contracts (Olympus, Stryker, Hill-Rom, Baxter) and medical supply contracts (Henry Schein, McKesson, Concordance Healthcare, Medline, Acupath, Biogen Disposal)</li>
+          <li>Developing and pitching a Group Purchasing Organization leveraging multi-facility volume to secure preferential pricing across the supply chain</li>
+          <li>Built ENVI medical inventory platform from scratch — owns setup, data entry, day-to-day management, and optimization across all facilities</li>
+          <li>Prepared and filed CMS-855B, CMS-460, and CMS-588 Medicare enrollment forms; maintained full DOH compliance documentation across NY and PA</li>
+          <li>Rebuilt QuickBooks workflows for multi-facility payroll, invoicing, reconciliations, and budget forecasting; supports P&amp;L review alongside CPAs and ownership</li>
+          <li>Leading physician recruitment outreach, candidate sourcing, interview coordination, and staff onboarding across multiple facilities</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-company">Odity — Golden Goose</span>
+          <span class="entry-location">New York, NY</span>
+        </div>
+        <div class="entry-role-line">
+          <span class="entry-role">Customer Service Representative</span>
+          <span class="entry-dates">Sep 2024 – Dec 2024</span>
+        </div>
+        <ul class="entry-bullets">
+          <li>Delivered luxury-level client support for Golden Goose via email and phone using Salesforce</li>
+          <li>Managed orders, exchanges, and escalations while maintaining strict brand service standards</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-company">Special Operations</span>
+          <span class="entry-location">New York, NY</span>
+        </div>
+        <div class="entry-role-line">
+          <span class="entry-role">Production Assistant</span>
+          <span class="entry-dates">Apr 2023 – Oct 2023</span>
+        </div>
+        <ul class="entry-bullets">
+          <li>Managed inventory and equipment rentals, improving studio operations workflow</li>
+          <li>Handled lighting setup, set builds, painting, and day-to-day studio upkeep</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-company">Drip Accessory</span>
+          <span class="entry-location">Brooklyn, NY</span>
+        </div>
+        <div class="entry-role-line">
+          <span class="entry-role">Customer Service Manager</span>
+          <span class="entry-dates">May 2020 – Apr 2023</span>
+        </div>
+        <ul class="entry-bullets">
+          <li>Founded and built the entire CS department at age 16 — hired, trained, and managed support agents from day one</li>
+          <li>Managed day-to-day operations for a growing national e-commerce brand</li>
+          <li>Implemented workflow improvements that measurably boosted team efficiency and customer satisfaction</li>
+        </ul>
+      </div>
+
+      <h2 class="section-title">Key Projects</h2>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-company">Rego Park Endoscopy Center</span>
+          <span class="entry-location">Rego Park, NY</span>
+        </div>
+        <div class="entry-role-line">
+          <span class="entry-role">Lead — Full ASC Buildout (Brooklyn's First ASC)</span>
+          <span class="entry-dates">2025</span>
+        </div>
+        <ul class="entry-bullets">
+          <li>Led end-to-end on-site buildout coordinating Rapid Construction and all subcontractors</li>
+          <li>Onboarded all supply and capital vendors; filed Medicare enrollment; configured EHR/EMR with SIS First and EndoVault</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-role-line">
+          <span class="entry-role">Smithtown ASC &middot; Hamptons Endoscopy &middot; Philadelphia Surgical LLC</span>
+          <span class="entry-dates">2025–2026</span>
+        </div>
+        <ul class="entry-bullets">
+          <li>Managing Medicare enrollment, vendor sourcing, supply chain buildout, contractor scheduling, and P&amp;L review across 3 additional ASC facilities in NY and PA</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- ===== RIGHT COLUMN ===== -->
+    <div class="right-col">
+
+      <h2 class="section-title">Education</h2>
+
+      <div class="edu-entry">
+        <div class="edu-school">Purdue University Global</div>
+        <div class="edu-degree">B.S. in Accounting</div>
+        <div class="edu-dates">Dec 2022 – Mar 2026 (Est.)</div>
+        <div class="edu-note">Completing while working full-time</div>
+      </div>
+
+      <div class="edu-entry">
+        <div class="edu-school">Brooklyn College</div>
+        <div class="edu-degree">Business Management</div>
+        <div class="edu-dates">Aug 2021 – Dec 2022</div>
+      </div>
+
+      <h2 class="section-title">Skills</h2>
+
+      <div class="skill-category">
+        <div class="skill-cat-label">Accounting &amp; Finance</div>
+        <div class="skill-cat-items">QuickBooks, Excel, Bookkeeping, Payroll, Budgeting, Reconciliations, Forecasting, P&amp;L Review</div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-cat-label">Healthcare Operations</div>
+        <div class="skill-cat-items">ASC Development, Medicare Enrollment, DOH Compliance, Construction Coord., Vendor Contracting, EHR/EMR Config, ENVI Inventory, GPO Development, Capital Procurement, Lead Mining, Hiring &amp; Recruiting</div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-cat-label">Tools &amp; Platforms</div>
+        <div class="skill-cat-items">Salesforce, Zendesk, Gorgias, Google Workspace, Microsoft Office, SIS First, EndoVault, ENVI</div>
+      </div>
+
+      <h2 class="section-title">Strengths</h2>
+
+      <div class="strength-item">Strong emotional intelligence; adapts communication to diverse personalities and builds productive relationships</div>
+      <div class="strength-item">Financial acumen in budgeting, reconciliations, and reporting</div>
+      <div class="strength-item">Proven time management balancing full-time work and school simultaneously</div>
+      <div class="strength-item">Highly adaptable in fast-paced, high-stakes environments</div>
+      <div class="strength-item">Takes ownership with minimal supervision — self-starter who drives results</div>
+      <div class="strength-item">Effective cross-team collaborator across construction, clinical, finance, and executive functions</div>
+
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
